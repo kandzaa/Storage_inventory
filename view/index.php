@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Ello</p>
+    <h1>Welcome to the page nigga</h1>
+    <?php include 'navbar.php';?>
 </body>
 </html>
