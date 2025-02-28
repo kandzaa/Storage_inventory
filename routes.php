@@ -8,4 +8,6 @@ return [
     '/login' => 'LoginController@login',  
     '/register' => 'RegisterController@register',
     '/dashboard' => 'DashboardController@dashboard',
+
+
 ];
