@@ -2,6 +2,17 @@
 
 class Validator
 {
+    public static function Crsf(){
+        $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+
+        if (!$token || $token !== $_SESSION['token']) {
+            return false;
+        } else {
+            return true;
+        }
+
+        return false;
+    }
 
     public static function Email(string $email)
     {
