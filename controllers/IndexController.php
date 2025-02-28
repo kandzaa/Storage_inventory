@@ -1,9 +1,11 @@
 <?php
+namespace controllers;
 
 class IndexController
 {
-    public function index()
+    public function index($params)
     {
-        require './view/index.php';
+        echo "Welcome to the homepage!";
     }
 }
+?>
