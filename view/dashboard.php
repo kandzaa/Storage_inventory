@@ -1,2 +1,2 @@
 <h1>Dashboard</h1>
-<?php include 'navbar.php';?>
+<?php include './components/navbar.php';?>

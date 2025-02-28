@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1>Welcome to the page nigga</h1>
-    <?php include 'navbar.php';?>
+    <?php include './components/navbar.php';?>
 </body>
 </html>
