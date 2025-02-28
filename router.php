@@ -3,7 +3,7 @@ $uri = parse_url($_SERVER["REQUEST_URI"])["path"];
 
 $routes = require("routes.php");
 foreach ($routes as $controller) {
-    require_once "controllers/" . explode("@", $controller)[0] . ".php";
+    require_once "Controller/" . explode("@", $controller)[0] . ".php";
   }
 
 if (array_key_exists($uri, $routes)) {

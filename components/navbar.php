@@ -1,13 +1,10 @@
 <?php include "./components/head.php" ?>
 
-<nav class="bg-gray-500 h-[80px] p-3">
-    <a href="/login" class="btn btn-accent btn-outline ">Login</a>
-    <a href="/register" class="btn btn-accent btn-outline">Register</a>
-    <a href="/dashboard" class="btn btn-accent btn-outline">Dashboard</a> 
-</nav>
+<div class="navbar bg-base-100">
+  <div class="flex-1">
+    <a href="/login" class="btn btn-ghost mr-3">Login</a>
+    <a href="/register" class="btn btn-ghost mr-3">Register</a>
+    <a href="/dashboard" class="btn btn-ghost mr-3">Dashboard</a> 
 
-<!-- <nav class="bg-gray-500 h-[80px] p-3">
-    <a href="/login" class="btn btn-accent btn-outline">Login</a>
-    <a href="/register" class="btn btn-accent btn-outline">Register</a>
-    <a href="/dashboard" class="btn btn-accent btn-outline">Dashboard</a> 
-</nav> -->
+  </div>
+</div>
