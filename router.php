@@ -5,7 +5,7 @@ class Router {
     protected function add($url, $controller, $method) {
         $this->routes[] = [
             'url' => $url,
-            'controller' => $controller,
+            'Controller' => $controller,
             'method' => strtoupper($method)
         ];
         return $this;
@@ -51,7 +51,7 @@ class Router {
                 }
 
                 // Ensure the controller exists
-                [$class, $method] = $route['controller'];
+                [$class, $method] = $route['Controller'];
                 if (!class_exists($class)) {
                     throw new Exception("Controller $class not found");
                 }

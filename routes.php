@@ -1,9 +1,8 @@
 <?php
-require "controllers/IndexController.php";
-require "controllers/LoginController.php";
+require "Controller/IndexController.php";
+require "Controller/LoginController.php";
 require "Router.php";
-use controllers\IndexController;
-use controllers\LoginController;
+
 
 $router = new Router();
 
