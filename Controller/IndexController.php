@@ -7,3 +7,6 @@ class IndexController
         require './view/index.php';
     }
 }
+
+
+
