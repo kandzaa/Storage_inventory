@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Page</title>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <?php include './components/navbar.php';?>
-</head>
+<?php include './components/head.php';?>
+<?php include './components/navbar.php';?>
+    <h1 class="text-red-600">Welcome to the page nigga</h1>
+
 <body class="min-h-screen flex flex-col bg-gray-50 font-sans">
-
-
 <div class="container mx-auto px-4 py-24 flex-grow flex flex-col items-center justify-center text-center">
     <h1 class="text-5xl font-bold text-gray-800 mb-6">Welcome to Our Work Platform</h1>
     <p class="text-xl text-gray-600 max-w-2xl mb-12">Login in to start your work</p>
@@ -33,3 +26,4 @@
 
 </body>
 </html>
+
