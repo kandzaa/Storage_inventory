@@ -5,14 +5,9 @@
 
 <?php require_once './DbConnect.class.php';
 
-$config = [
-    'host' => 'localhost',
-    'dbname' => 'storage_inventory',
-    'username' => 'root',
-    'password' => ''
-];
 
-$db = new DbConnect($config);
+
+$db = new DbConnect();
 
 $sql = "SELECT 
             INVENTORY.ID as inventory_id, 

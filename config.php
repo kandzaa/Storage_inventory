@@ -8,6 +8,6 @@ return [
     "port" => "8889",
     "dbname" => "storage_inventory",
     "user" => "root",
-    "password" => "root",
+    "password" => "",
     "charset" => "UTF8"
 ];
