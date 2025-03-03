@@ -3,8 +3,8 @@ require_once './Models/Model.php';
 
 class DashboardModel extends Model
 {
-    private $db;
-
+    public $db;
+    
     public function __construct()
     {
         $this->db = new DbConnect();
