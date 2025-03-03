@@ -1,28 +1,28 @@
 <?php include './components/head.php';?>
 <?php include './components/navbar.php';?>
+<?php include './Models/InventoryModel.php';?>
 
 <h1 class="text-2xl">Dashboard</h1>
 
-<?php require_once './DbConnect.class.php';
-
-
-
-$db = new DbConnect();
-
-$sql = "SELECT 
-            INVENTORY.ID as inventory_id, 
-            PRODUCTS.PRODUCTNAME, 
-            CATEGORY.CATEGORY, 
-            INVENTORY.QUANTITY, 
-            PRODUCTS.PRICE 
-        FROM INVENTORY 
-        JOIN PRODUCTS ON INVENTORY.PRODUCT_ID = PRODUCTS.ID 
-        JOIN CATEGORY ON PRODUCTS.CATEGORY_ID = CATEGORY.ID";
-
-$stmt = $db->dbconn->prepare($sql);
-$stmt->execute();
-$inventoryItems = $stmt->fetchAll();
+<?php
+$inventoryModel = new InventoryModel();
+$inventoryItems = $inventoryModel->getInventoryItems();
 ?>
+
+<select>
+    <?php
+    for ($i = 0; $i < count($inventoryItems); $i++) {
+        $item = $inventoryItems[$i];
+        echo "<option value=''>" . $item["CATEGORY"] . "</option>";
+        echo "<option value=''>" . $item["CATEGORY"] . "</option>";
+        echo "<option value=''>" . $item["CATEGORY"] . "</option>"; 
+        echo "<option value=''>" . $item["CATEGORY"] . "</option>";
+        echo "<option value=''>" . $item["CATEGORY"] . "</option>";
+    }
+    ?>
+</select>
+
+
 <table class="table table-compact border-2 border-white">
     <thead>
         <tr>
