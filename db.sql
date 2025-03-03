@@ -47,3 +47,52 @@ CREATE TABLE LOGS(
     ACTION_TIME TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (USER_ID) REFERENCES USER(ID)
 );
+
+
+-- Insert data into USER table
+INSERT INTO USER (USERNAME, PASSWORD, ROLE) VALUES
+('admin1', 'password1', 'ADMIN'),
+('worker1', 'password2', 'WORKER'),
+('user1', 'password3', 'USER'),
+('admin2', 'password4', 'ADMIN'),
+('worker2', 'password5', 'WORKER');
+
+-- Insert data into CATEGORY table
+INSERT INTO CATEGORY (CATEGORY) VALUES
+('Electronics'),
+('Furniture'),
+('Clothing'),
+('Books'),
+('Toys');
+
+-- Insert data into SHELF table
+INSERT INTO SHELF (SHELFNAME) VALUES
+('Shelf A'),
+('Shelf B'),
+('Shelf C'),
+('Shelf D'),
+('Shelf E');
+
+-- Insert data into PRODUCTS table
+INSERT INTO PRODUCTS (PRODUCTNAME, CATEGORY_ID, PRICE, SUPPLIER) VALUES
+('Laptop', 1, 1000, 'Supplier A'),
+('Chair', 2, 150, 'Supplier B'),
+('T-shirt', 3, 20, 'Supplier C'),
+('Novel', 4, 10, 'Supplier D'),
+('Action Figure', 5, 25, 'Supplier E');
+
+-- Insert data into INVENTORY table
+INSERT INTO INVENTORY (SHELF_ID, PRODUCT_ID, QUANTITY) VALUES
+(1, 1, 10),
+(2, 2, 20),
+(3, 3, 30),
+(4, 4, 40),
+(5, 5, 50);
+
+-- Insert data into LOGS table
+INSERT INTO LOGS (USER_ID, TARGET_ID, TARGET_TYPE, DESCRIPTION) VALUES
+(1, 1, 'PRODUCT', 'Added new product'),
+(2, 2, 'PRODUCT', 'Updated product quantity'),
+(3, 3, 'PRODUCT', 'Deleted product'),
+(4, 4, 'PRODUCT', 'Viewed product details'),
+(5, 5, 'PRODUCT', 'Added new product');
