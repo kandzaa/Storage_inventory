@@ -45,26 +45,6 @@ class Validator
             return false;
         }
 
-        if ( !preg_match("#[0-9]+#", $string) )
-        {
-            return false;
-        }
-    
-        if ( !preg_match("#[a-z]+#", $string) )
-        {
-            return false;
-        }
-    
-        if ( !preg_match("#[A-Z]+#", $string) )
-        {
-            return false;
-        }
-    
-        if ( !preg_match("/[\'^£$%&*()}{@#~?><>,|=_+!-]/", $string) ) //spec characters
-        {
-            return false;
-        }
-
         return true;
     }
 

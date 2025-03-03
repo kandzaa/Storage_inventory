@@ -1,6 +1,7 @@
 <?php
 
 require "Models/UserModel.php";
+require "Validator.php";
 class AuthController
 {
     public function login()
@@ -11,6 +12,59 @@ class AuthController
     public function register()
     {
         include './view/register.php';
+    }
+
+    public function processLogin()
+    {
+        // if (session_status() == PHP_SESSION_NONE) {
+        //     session_start();
+        // }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $errors = [];
+            $userModel = new UserModel();
+
+            $username = $_POST['username'] ?? '';
+            $password = $_POST['password'] ?? '';
+
+            if(Validator::String($username) == false)
+            {
+                $errors[] = "Username must be a string";
+            }
+
+            if(Validator::Password($password) == false)
+            {
+                $errors[] = "Password must be a string";
+            }
+
+            if($userModel->getUser($username) == false)
+            {
+                $errors[] = "User does not exist";
+            }
+
+            if(password_verify($password, $userModel->getUser($username)[0]['PASSWORD']) == false)
+            {
+                $errors[] = "Password is incorrect";
+            }
+            
+            if(empty($errors))
+            {
+                $_SESSION['user'] = $userModel->getUser($username)[0];
+                header('Location: /dashboard');
+                exit;
+
+            }else{
+
+                header('Location: /login');
+                exit;
+
+            }
+
+            
+        }
+            
+
+
     }
 
     public function processRegistration()
