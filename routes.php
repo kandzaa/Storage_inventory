@@ -1,6 +1,8 @@
 <?php
 require "Controller/IndexController.php";
 require "Controller/LoginController.php";
+require "Controller/RegisterController.php";
+require "Controller/DashboardController.php";
 require "Router.php";
 
 
