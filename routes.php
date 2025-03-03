@@ -2,6 +2,7 @@
 require "Controller/IndexController.php";
 require "Controller/AuthController.php";
 require "Controller/DashboardController.php";
+require "Controller/InventoryController.php";
 require "Router.php";
 
 
@@ -17,6 +18,7 @@ $router->post('/login/process', [AuthController::class, 'processLogin']);
 $router->get('/register', [AuthController::class, 'register']);
 $router->post('/register/process', [AuthController::class, 'processRegistration']);
 $router->get('/dashboard', [DashboardController::class, 'dashboard']);
+$router->get('/inventory', [InventoryController::class, 'inventory']);
 
 
 $router->route($url, $method);
