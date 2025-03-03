@@ -9,21 +9,17 @@ $inventoryModel = new InventoryModel();
 $inventoryItems = $inventoryModel->getInventoryItems();
 ?>
 
-<select>
-    <?php
-    for ($i = 0; $i < count($inventoryItems); $i++) {
-        $item = $inventoryItems[$i];
-        echo "<option value=''>" . $item["CATEGORY"] . "</option>";
-        echo "<option value=''>" . $item["CATEGORY"] . "</option>";
-        echo "<option value=''>" . $item["CATEGORY"] . "</option>"; 
-        echo "<option value=''>" . $item["CATEGORY"] . "</option>";
-        echo "<option value=''>" . $item["CATEGORY"] . "</option>";
+<select id="categoryFilter">
+    <option value="all">All</option>
+    <?php   
+    $categories = array_unique(array_column($inventoryItems, 'CATEGORY'));
+    foreach ($categories as $category) {
+        echo "<option value='" . $category . "'>" . $category . "</option>";
     }
     ?>
 </select>
 
-
-<table class="table table-compact border-2 border-white">
+<table class="table table-compact border-2 border-white" id="inventoryTable">
     <thead>
         <tr>
             <th>Product ID</th>
@@ -33,8 +29,8 @@ $inventoryItems = $inventoryModel->getInventoryItems();
             <th>Price</th>
         </tr>
     </thead>
-    <tbody> 
-    <?php
+    <tbody>
+        <?php
         if (!empty($inventoryItems)) {
             foreach ($inventoryItems as $item) {
                 echo "<tr>";
@@ -51,3 +47,18 @@ $inventoryItems = $inventoryModel->getInventoryItems();
         ?>
     </tbody>
 </table>
+
+<script>
+document.getElementById('categoryFilter').addEventListener('change', function() {
+    var filter = this.value;
+    var rows = document.querySelectorAll('#inventoryTable tbody tr');
+    rows.forEach(function(row) {
+        var category = row.cells[2].innerText;
+        if (filter === 'all' || category === filter) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+});
+</script>
