@@ -24,3 +24,4 @@ class DbConnect{
         return $query->fetchAll();
     }
 }
+ 

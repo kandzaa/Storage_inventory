@@ -1,8 +1,8 @@
 <?php
-require_once 'DbConnect.php';
+require_once './DbConnect.class.php';
 abstract class Model
 {
-    public $db;
+    private $db;
 
     public function __construct()
     {
