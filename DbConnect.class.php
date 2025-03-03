@@ -18,8 +18,7 @@ class DbConnect{
         $this->dbconn = null;
     }
 
-    function executeStatement($statement){
-        $this->dbconn->exec($this->$statement);
+    function getConnection(){
+        return $this->dbconn;
     }
-
 }
