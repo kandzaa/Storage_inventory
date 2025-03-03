@@ -1,5 +1,13 @@
 <?php include './components/head.php';?>
 <?php include './components/navbar.php';?>
+<?php include './Models/DashboardModel.php';?>
+
+<?php
+$total = new DashboardModel();
+$items = $total->getTotalItems();
+$quentity = $total->getLowStockItems();
+
+?>
 
 <h1 class="text-4xl text-center font-bold text-white-800 ">Inventory Dashboard</h1>
 <table class="table w-full text-center mt-12 font-bold text-white ">
@@ -19,10 +27,10 @@
     <tbody>
         <tr>
             <td>
-                <?php echo count($products) ?>
+                <?= $items[0]['total']?>
             </td>
             <td> 
-                <?php echo count($quentity) ?>
+                <?= Count($quentity); ?>
             </td>
             <td>
                 10
