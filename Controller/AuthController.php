@@ -55,8 +55,9 @@ class AuthController
 
             }else{
 
-                header('Location: /login');
-                exit;
+                include './view/login.php';
+                // header('Location: /login');
+                // exit;
 
             }
 
