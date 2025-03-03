@@ -2,7 +2,7 @@
 require_once './DbConnect.class.php';
 abstract class Model
 {
-    private $db;
+    protected $db;
 
     public function __construct()
     {
