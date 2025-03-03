@@ -1,6 +1,7 @@
 <?php
 require "Controller/IndexController.php";
-require "Controller/LoginController.php";
+require "Controller/AuthController.php";
+require "Controller/DashboardController.php";
 require "Router.php";
 
 
@@ -11,8 +12,8 @@ $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 
 $router->get('/', [IndexController::class, 'index']);
-$router->get('/login', [LoginController::class, 'login']);
-$router->get('/register', [RegisterController::class, 'register']);
+$router->get('/login', [AuthController::class, 'login']);
+$router->get('/register', [AuthController::class, 'register']);
 $router->get('/dashboard', [DashboardController::class, 'dashboard']);
 
 
