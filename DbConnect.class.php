@@ -18,7 +18,9 @@ class DbConnect{
         $this->dbconn = null;
     }
 
-    function getConnection(){
-        return $this->dbconn;
+    function execute($sql){
+        $query = $this->dbconn->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
     }
 }
