@@ -4,7 +4,7 @@ require_once './Models/Model.php';
 class DashboardModel extends Model
 {
     public $db;
-    
+
     public function __construct()
     {
         $this->db = new DbConnect();
