@@ -1,9 +1,11 @@
 <?php
+require "Router.php";
+require "session.php";
+
 require "Controller/IndexController.php";
 require "Controller/AuthController.php";
 require "Controller/DashboardController.php";
 require "Controller/InventoryController.php";
-require "Router.php";
 
 
 $router = new Router();
