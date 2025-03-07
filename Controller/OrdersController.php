@@ -1,14 +1,19 @@
 <?php
 
-// require "Validator.php";
-class DashboardController
+class OrdersController
 {
-    public function dashboard()
+    public function orders()
     {
         if (Validator::Role() == false) { //only can use this if logged in
             header("Location: /login");
             exit();
         }
-        include './view/dashboard.php';
+        require './view/orders.php';
+        
     }
+
+   
 }
+
+
+
