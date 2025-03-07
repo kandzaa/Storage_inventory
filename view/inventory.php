@@ -19,7 +19,7 @@ $inventoryItems = $inventoryModel->getInventoryItems();
     ?>
 </select>
 
-<table class="table table-compact border-2 border-white" id="inventoryTable">
+<table class="table table-zebra" id="inventoryTable">
     <thead>
         <tr>
             <th>Product ID</th>

@@ -10,7 +10,7 @@ $quentity = $total->getLowStockItems();
 ?>
 
 <h1 class="text-4xl text-center font-bold text-white-800 ">Inventory Dashboard</h1>
-<table class="table w-full text-center mt-12 font-bold text-white ">
+<table class="table">
     <thead class="text-white">
         <tr>
             <td>
