@@ -28,7 +28,7 @@ $inventoryItems = $inventoryModel->getInventoryItems();
             <th class="border border-gray-300 px-4 py-2">Product Name</th>
             <th class="border border-gray-300 px-4 py-2">Category</th>
             <th class="border border-gray-300 px-4 py-2">Quantity</th>
-            <th class="border border-gray-300 px-4 py-2">Price</th>
+            <th class="border border-gray-300 px-4 py-2">Price(per 1)</th>
         </tr>
     </thead>
     <tbody>

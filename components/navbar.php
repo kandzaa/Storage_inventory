@@ -6,6 +6,7 @@
     <a href="/register" class="btn btn-ghost mr-3">Register</a>
     <a href="/dashboard" class="btn btn-ghost mr-3">Dashboard</a> 
     <a href="/inventory" class="btn btn-ghost mr-3">Inventory</a>
-      <a href="/products/add" class="btn btn-ghost mr-3">Add Products</a>
+    <a href="/products/add" class="btn btn-ghost mr-3">Add Products</a>
+    <a href="/orders" class="btn btn-ghost mr-3">Orders</a>
   </div>
 </div>
