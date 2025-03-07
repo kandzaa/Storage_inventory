@@ -9,7 +9,6 @@ class DashboardController
             header("Location: /login");
             exit();
         }
-        var_dump($_SESSION);
         include './view/dashboard.php';
     }
 }
