@@ -52,5 +52,6 @@ class ProductsModel extends Model
         $this->db->execute($sql, $params);
         $result = $this->db->execute("SELECT LAST_INSERT_ID()");
         return $result[0]['LAST_INSERT_ID()'];
+
     }
 }

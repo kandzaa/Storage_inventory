@@ -45,5 +45,6 @@ class InventoryModel extends Model
 
 
         return $this->db->execute($sql, $params, true);
+
     }
 }

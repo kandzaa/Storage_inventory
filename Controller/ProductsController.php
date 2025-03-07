@@ -34,6 +34,7 @@ class ProductsController
             'quantity' => $quantity
         ]);
 
+
         header('Location: /inventory');
         exit;
     }
