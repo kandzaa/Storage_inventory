@@ -6,6 +6,7 @@
 $total = new DashboardModel();
 $items = $total->getTotalItems();
 $quentity = $total->getLowStockItems();
+$recent = $total->getRecentItems();
 
 ?>
 
@@ -33,7 +34,7 @@ $quentity = $total->getLowStockItems();
                 <?= Count($quentity); ?>
             </td>
             <td>
-                10
+            <?= Count($recent); ?>
             </td>
         </tr>
     </tbody>
