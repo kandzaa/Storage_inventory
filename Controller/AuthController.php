@@ -27,45 +27,34 @@ class AuthController
             $username = $_POST['username'] ?? '';
             $password = $_POST['password'] ?? '';
 
-            if(Validator::String($username) == false)
-            {
+            if (Validator::String($username) == false) {
                 $errors[] = "Username must be a string";
             }
 
-            if(Validator::Password($password) == false)
-            {
+            if (Validator::Password($password) == false) {
                 $errors[] = "Password must be a string";
             }
 
-            if($userModel->getUser($username) == false)
-            {
+            if ($userModel->getUser($username) == false) {
                 $errors[] = "User does not exist";
             }
 
-            if(password_verify($password, $userModel->getUser($username)[0]['PASSWORD']) == false)
-            {
+            if (password_verify($password, $userModel->getUser($username)[0]['PASSWORD'] ?? false) == false) {
                 $errors[] = "Password is incorrect";
             }
-            
-            if(empty($errors))
-            {
+
+            if (empty($errors)) {
                 $_SESSION['user'] = $userModel->getUser($username)[0];
                 header('Location: /dashboard');
                 exit;
-
-            }else{
+            } else {
 
                 include './view/login.php';
                 // header('Location: /login');
                 // exit;
 
             }
-
-            
         }
-            
-
-
     }
 
     public function processRegistration()
@@ -118,7 +107,6 @@ class AuthController
                             $errors[] = "Registration failed. Please try again.";
                         }
                     }
-
                 } catch (PDOException $e) {
                     $errors[] = "Database error: " . $e->getMessage();
                 }
@@ -138,4 +126,3 @@ class AuthController
         }
     }
 }
-?>
