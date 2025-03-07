@@ -1,4 +1,5 @@
 <?php
+require "session.php";
 require "Controller/IndexController.php";
 require "Controller/AuthController.php";
 require "Controller/DashboardController.php";
