@@ -4,6 +4,7 @@ require "Controller/IndexController.php";
 require "Controller/AuthController.php";
 require "Controller/DashboardController.php";
 require "Controller/InventoryController.php";
+require "Controller/ProductsController.php";
 require "Router.php";
 
 
@@ -20,6 +21,8 @@ $router->get('/register', [AuthController::class, 'register']);
 $router->post('/register/process', [AuthController::class, 'processRegistration']);
 $router->get('/dashboard', [DashboardController::class, 'dashboard']);
 $router->get('/inventory', [InventoryController::class, 'inventory']);
+$router->get('/products/add', [ProductsController::class, 'create']);
+$router->post('/products/add/store', [ProductsController::class, 'store']);
 
 
 
