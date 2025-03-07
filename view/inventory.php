@@ -1,6 +1,6 @@
 <?php include './components/head.php';?>
 <?php include './components/navbar.php';?>
-<?php include './Models/InventoryModel.php';?>
+<?php include_once './Models/InventoryModel.php';?>
 
 <h1 class="text-4xl text-center font-bold mb-6">Inventory</h1>
 

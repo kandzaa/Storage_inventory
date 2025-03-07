@@ -24,4 +24,26 @@ class InventoryModel extends Model
 
         return $this->db->execute($sql);
     }
+
+    public function store($data)
+    {
+
+        $shelfId = $data['shelfId'];
+        $productId = $data['productId'];
+        $quantity = $data['quantity'];
+
+
+        $sql = "INSERT INTO INVENTORY (SHELF_ID, PRODUCT_ID, QUANTITY, LASTUPDATE) 
+            VALUES (:shelfId, :productId, :quantity, NOW())";
+
+
+        $params = [
+            ':shelfId' => $shelfId,
+            ':productId' => $productId,
+            ':quantity' => $quantity
+        ];
+
+
+        return $this->db->execute($sql, $params, true);
+    }
 }

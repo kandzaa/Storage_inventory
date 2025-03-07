@@ -4,6 +4,7 @@ require_once './Models/Model.php';
 class ProductsModel extends Model
 {
     public $db;
+    public $id;
 
     public function __construct()
     {
@@ -19,6 +20,14 @@ class ProductsModel extends Model
         return $this->db->execute($sql);
     }
 
+    public function getshelfs(){
+        $sql = "SELECT 
+                    *
+                FROM SHELF
+               ";
+
+        return $this->db->execute($sql);
+    }
     public function create($data)
     {
 
@@ -40,6 +49,8 @@ class ProductsModel extends Model
         ];
 
 
-        return $this->db->execute($sql, $params, true);
+        $this->db->execute($sql, $params);
+        $result = $this->db->execute("SELECT LAST_INSERT_ID()");
+        return $result[0]['LAST_INSERT_ID()'];
     }
 }
