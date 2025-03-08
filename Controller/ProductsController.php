@@ -7,6 +7,10 @@ class ProductsController
 
     public function create(){
 
+        if (Validator::Role() == false) { //only can use this if logged in
+            header("Location: /login");
+            exit();
+        }
         require './view/products.php';
     }
 
