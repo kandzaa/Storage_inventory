@@ -6,6 +6,7 @@ require "Controller/DashboardController.php";
 require "Controller/InventoryController.php";
 require "Controller/ProductsController.php";
 require "Controller/OrdersController.php";
+require "Controller/AdminController.php";
 require "Router.php";
 
 
@@ -31,7 +32,7 @@ $router->get('/products/edit', [ProductsController::class, 'edit']);
 $router->post('/products/edit/process', [ProductsController::class, 'update']);
 
 $router->get('/orders', [OrdersController::class, 'orders']);
-
+$router->get('/admin', [AdminController::class, 'show']);
 
 
 $router->route($url, $method);
