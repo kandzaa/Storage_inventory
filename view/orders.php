@@ -12,12 +12,14 @@ $orders = $ordersModel->getOrders();
 <table class="table-auto w-full border-collapse border border-gray-300">
     <thead>
         <tr class="bg-gray-700 text-white">
-            <th class="border border-gray-300 px-4 py-2">ID</th>
-            <th class="border border-gray-300 px-4 py-2">Date</th>
+            <th class="border border-gray-300 px-4 py-2">Order ID</th>
+            <th class="border border-gray-300 px-4 py-2">Order Date</th>
             <th class="border border-gray-300 px-4 py-2">Product Name</th>
+            <th class="border border-gray-300 px-4 py-2">Category ID</th>
+            <th class="border border-gray-300 px-4 py-2">Supplier</th>
+            <th class="border border-gray-300 px-4 py-2">Price</th>
             <th class="border border-gray-300 px-4 py-2">Quantity</th>
-            <th class="border border-gray-300 px-4 py-2">Transaction Type</th>
-            <th class="border border-gray-300 px-4 py-2">Total Price</th>
+            <th class="border border-gray-300 px-4 py-2">State</th>
         </tr>
     </thead>
     <tbody>
@@ -28,13 +30,15 @@ $orders = $ordersModel->getOrders();
                 echo "<td class='border border-gray-300 px-4 py-2'>" . $order["order_id"] . "</td>";
                 echo "<td class='border border-gray-300 px-4 py-2'>" . $order["order_date"] . "</td>";
                 echo "<td class='border border-gray-300 px-4 py-2'>" . $order["product_name"] . "</td>";
+                echo "<td class='border border-gray-300 px-4 py-2'>" . $order["category_id"] . "</td>";
+                echo "<td class='border border-gray-300 px-4 py-2'>" . $order["supplier"] . "</td>";
+                echo "<td class='border border-gray-300 px-4 py-2'>" . $order["price"] . "</td>";
                 echo "<td class='border border-gray-300 px-4 py-2'>" . $order["quantity"] . "</td>";
                 echo "<td class='border border-gray-300 px-4 py-2'>" . $order["state"] . "</td>";
-                echo "<td class='border border-gray-300 px-4 py-2'>" . $order["total_price"] . "</td>";
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='6' class='border border-gray-300 px-4 py-2 text-center'>No data found</td></tr>";
+            echo "<tr><td colspan='8' class='border border-gray-300 px-4 py-2 text-center'>No data found</td></tr>";
         }
         ?>
     </tbody>
