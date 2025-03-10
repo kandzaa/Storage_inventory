@@ -1,6 +1,6 @@
-<?php include './components/head.php';?>
-<?php include './components/navbar.php';?>
-<?php include_once './Models/InventoryModel.php';?>
+<?php include './components/head.php'; ?>
+<?php include './components/navbar.php'; ?>
+<?php include_once './Models/InventoryModel.php'; ?>
 
 <h1 class="text-4xl text-center font-bold mb-6">Inventory</h1>
 
@@ -12,7 +12,7 @@ $inventoryItems = $inventoryModel->getInventoryItems();
 <div class="flex justify-center mb-6">
     <select id="categoryFilter" class="block appearance-none w-1/3 bg-gray-800 text-white border border-gray-600 hover:border-gray-400 px-3 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
         <option value="all">All</option>
-        <?php   
+        <?php
         $categories = array_unique(array_column($inventoryItems, 'CATEGORY'));
         foreach ($categories as $category) {
             echo "<option value='" . $category . "'>" . $category . "</option>";
@@ -60,57 +60,62 @@ $inventoryItems = $inventoryModel->getInventoryItems();
             <p><strong>Price:</strong> <span id="modalPrice"></span></p>
             <p><strong>Supplier:</strong> <span id="modalSupplier"></span></p>
             <div class="flex justify-end mt-4">
-                <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded mr-2">Edit</button>
-                <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">Delete</button>
+
+                <a href="/products/edit?id=<?= $item["inventory_id"] ?>"><button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded mr-2">Edit</button></a>
+
+                <form action="/products/remove" method="POST">
+                    <input type="hidden" name="id" id="id" value="<?= $item["inventory_id"] ?>">
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">Delete</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
 <script>
-document.getElementById('categoryFilter').addEventListener('change', function() {
-    var filter = this.value;
-    var rows = document.querySelectorAll('#inventoryTable tbody tr');
-    rows.forEach(function(row) {
-        var category = row.cells[2].innerText;
-        if (filter === 'all' || category === filter) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
+    document.getElementById('categoryFilter').addEventListener('change', function() {
+        var filter = this.value;
+        var rows = document.querySelectorAll('#inventoryTable tbody tr');
+        rows.forEach(function(row) {
+            var category = row.cells[2].innerText;
+            if (filter === 'all' || category === filter) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+
+    document.querySelectorAll('.inventory-item').forEach(function(item) {
+        item.addEventListener('click', function() {
+            var productName = this.cells[1].innerText;
+            var category = this.cells[2].innerText;
+            var quantity = this.cells[3].innerText;
+            var price = this.cells[4].innerText;
+            var supplier = this.cells[5] ? this.cells[5].innerText : 'Unknown'; // Assuming supplier is in the 6th cell
+
+            document.getElementById('modalProductName').innerText = productName;
+            document.getElementById('modalCategory').innerText = category;
+            document.getElementById('modalQuantity').innerText = quantity;
+            document.getElementById('modalPrice').innerText = price;
+            document.getElementById('modalSupplier').innerText = supplier;
+
+            var modal = document.getElementById('itemModal');
+            modal.classList.remove('hidden');
+            setTimeout(function() {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('.modal-content').classList.remove('scale-95');
+            }, 10);
+        });
+    });
+
+    document.getElementById('itemModal').addEventListener('click', function(event) {
+        if (event.target === this) {
+            var modal = this;
+            modal.classList.add('opacity-0');
+            modal.querySelector('.modal-content').classList.add('scale-95');
+            setTimeout(function() {
+                modal.classList.add('hidden');
+            }, 300);
         }
     });
-});
-
-document.querySelectorAll('.inventory-item').forEach(function(item) {
-    item.addEventListener('click', function() {
-        var productName = this.cells[1].innerText;
-        var category = this.cells[2].innerText;
-        var quantity = this.cells[3].innerText;
-        var price = this.cells[4].innerText;
-        var supplier = this.cells[5] ? this.cells[5].innerText : 'Unknown'; // Assuming supplier is in the 6th cell
-
-        document.getElementById('modalProductName').innerText = productName;
-        document.getElementById('modalCategory').innerText = category;
-        document.getElementById('modalQuantity').innerText = quantity;
-        document.getElementById('modalPrice').innerText = price;
-        document.getElementById('modalSupplier').innerText = supplier;
-
-        var modal = document.getElementById('itemModal');
-        modal.classList.remove('hidden');
-        setTimeout(function() {
-            modal.classList.remove('opacity-0');
-            modal.querySelector('.modal-content').classList.remove('scale-95');
-        }, 10);
-    });
-});
-
-document.getElementById('itemModal').addEventListener('click', function(event) {
-    if (event.target === this) {
-        var modal = this;
-        modal.classList.add('opacity-0');
-        modal.querySelector('.modal-content').classList.add('scale-95');
-        setTimeout(function() {
-            modal.classList.add('hidden');
-        }, 300);
-    }
-});
 </script>
