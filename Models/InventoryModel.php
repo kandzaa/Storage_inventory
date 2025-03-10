@@ -46,4 +46,35 @@ class InventoryModel extends Model
 
         return $this->db->execute($sql, $params, true);
     }
+
+    public function deleteWhereProductId($id)
+    {
+        $sql = "DELETE FROM INVENTORY WHERE PRODUCT_ID = :id";
+        $params = [
+            ':id' => $id
+        ];
+        $this->db->execute($sql, $params);
+    }
+
+    public function update($id, $data)
+    {
+        $sql = "UPDATE INVENTORY SET LASTUPDATE = NOW(), QUANTITY = :quantity, SHELF_ID = :shelfId, PRODUCT_ID = :productId  WHERE ID = :id";
+        $params = [
+            ':id' => $id,
+            ':quantity' => $data['quantity'],
+            ':shelfId' => $data['shelfId'],
+            ':productId' => $data['productId']
+        ];
+        $this->db->execute($sql, $params);
+    }
+
+
+    public function delete($id)
+    {
+        $sql = "DELETE FROM INVENTORY WHERE ID = :id";
+        $params = [
+            ':id' => $id
+        ];
+        $this->db->execute($sql, $params);
+    }
 }
