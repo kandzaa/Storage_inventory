@@ -13,7 +13,12 @@
       <a href="/products/add" class="btn btn-ghost mr-3">Add Products</a>
       <a href="/orders" class="btn btn-ghost mr-3">Orders</a>';
     }else if(Validator::Role('ADMIN')) {
-      echo '<a href="/admin" class="btn btn-ghost mr-3">Admin</a>';
+     echo '
+      <a href="/dashboard" class="btn btn-ghost mr-3">Dashboard</a>
+      <a href="/inventory" class="btn btn-ghost mr-3">Inventory</a>
+      <a href="/products/add" class="btn btn-ghost mr-3">Add Products</a>
+      <a href="/orders" class="btn btn-ghost mr-3">Orders</a>
+      <a href="/admin" class="btn btn-ghost mr-3">Admin</a>';
    }
    ?> 
   </div>
