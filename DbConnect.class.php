@@ -23,5 +23,15 @@ class DbConnect{
         $query->execute($params);
         return $query->fetchAll();
     }
+    function query($sql, $params = []) {
+        $stmt = $this->dbconn->prepare($sql);
+
+        if (!$stmt) {
+            throw new PDOException("Query preparation failed: " . implode(" ", $this->dbconn->errorInfo()));
+        }
+
+        $stmt->execute($params);
+        return $stmt;
+    }
 }
  

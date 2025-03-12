@@ -7,6 +7,7 @@ require "Controller/InventoryController.php";
 require "Controller/ProductsController.php";
 require "Controller/OrdersController.php";
 require "Controller/AdminController.php";
+require "Controller/ReportController.php";
 require "Router.php";
 
 
@@ -33,6 +34,9 @@ $router->post('/products/edit/process', [ProductsController::class, 'update']);
 
 $router->get('/orders', [OrdersController::class, 'orders']);
 $router->get('/admin', [AdminController::class, 'show']);
+$router->get('/report', [ReportController::class, 'index']);
+$router->post('/report/generate', [ReportController::class, 'generateReport']);
+
 
 
 $router->route($url, $method);
