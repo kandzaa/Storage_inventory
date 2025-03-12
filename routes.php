@@ -8,6 +8,8 @@ require "Controller/ProductsController.php";
 require "Controller/OrdersController.php";
 require "Controller/AdminController.php";
 require "Controller/ReportController.php";
+
+
 require "Router.php";
 
 
@@ -31,6 +33,7 @@ $router->post('/products/add/store', [ProductsController::class, 'store']);
 $router->post('/products/remove', [ProductsController::class, 'remove']);
 $router->get('/products/edit', [ProductsController::class, 'edit']);
 $router->post('/products/edit/process', [ProductsController::class, 'update']);
+$router->post('/admin/save', [AdminController::class, 'saveUser']);
 
 $router->get('/orders', [OrdersController::class, 'orders']);
 $router->get('/admin', [AdminController::class, 'show']);
