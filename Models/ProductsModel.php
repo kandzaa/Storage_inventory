@@ -21,6 +21,39 @@ class ProductsModel extends Model
         return $this->db->execute($sql);
     }
 
+    // In ProductsModel.php
+    public function where($ids) {
+        if (is_array($ids) && count($ids) > 0) {
+
+            $placeholders = rtrim(str_repeat('?,', count($ids)), ',');
+
+            $sql = "SELECT * FROM products WHERE ID IN ($placeholders)";
+            $stmt = $this->db->query($sql, $ids);
+            return $stmt->fetchAll();
+        } else {
+            if (empty($ids)) {
+                return [];
+            }
+
+            $sql = "SELECT * FROM products WHERE ID = ?";
+            $stmt = $this->db->query($sql, [$ids]);
+            return $stmt->fetchAll();
+        }
+    }
+
+
+
+    public function getAllProducts()
+    {
+        $sql = "SELECT 
+                    *
+                FROM PRODUCTS 
+               ";
+
+        return $this->db->execute($sql);
+    }
+
+
     public function getshelfs()
     {
         $sql = "SELECT 
@@ -39,6 +72,8 @@ class ProductsModel extends Model
         ];
         return $this->db->execute($sql, $params);
     }
+
+
 
     public function delete($id)
     {
