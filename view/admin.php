@@ -41,14 +41,32 @@ $users = $usermodel->getUsers();
 <?php if (isset($_GET['username']) && isset($_GET['password']) && isset($_GET['role'])): ?>
     <div class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
         <div class="bg-gray-800 text-white rounded-lg shadow-lg p-6 w-1/3 transform transition-transform duration-300 scale-95">
-            <h2 class="text-2xl font-bold mb-4">User Details</h2>
-            <p><strong>USERNAME:</strong> <?php echo htmlspecialchars($_GET['username']); ?></p>
-            <p><strong>PASSWORD:</strong> <?php echo htmlspecialchars($_GET['password']); ?></p>
-            <p><strong>ROLE:</strong> <?php echo htmlspecialchars($_GET['role']); ?></p>
-            <div class="flex justify-end mt-4">
-                <a href="admin_save" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded mr-2">Save</a>
-                <a href="admin" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">Close</a>
-            </div>
+            <h2 class="text-2xl font-bold mb-4">Edit User Details</h2>
+            <form action="admin_save.php" method="post">
+                <label class="block mb-2">
+                    <strong>USERNAME:</strong>
+                    <input type="text" name="username" value="<?php echo htmlspecialchars($_GET['username']); ?>" class="w-full bg-gray-700 text-white px-2 py-1 rounded">
+                </label>
+
+                <label class="block mb-2">
+                    <strong>PASSWORD:</strong>
+                    <input type="text" name="password" value="<?php echo htmlspecialchars($_GET['password']); ?>" class="w-full bg-gray-700 text-white px-2 py-1 rounded">
+                </label>
+
+                <label class="block mb-2">
+                    <strong>ROLE:</strong>
+                    <select name="role" class="w-full bg-gray-700 text-white px-2 py-1 rounded">
+                        <option value="ADMIN" <?php if ($_GET['role'] == 'ADMIN') echo 'selected'; ?>>ADMIN</option>
+                        <option value="WORKER" <?php if ($_GET['role'] == 'WORKER') echo 'selected'; ?>>WORKER</option>
+                        <option value="USER" <?php if ($_GET['role'] == 'USER') echo 'selected'; ?>>USER</option>
+                    </select>
+                </label>
+
+                <div class="flex justify-end mt-4">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded mr-2">Save</button>
+                    <a href="admin" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">Close</a>
+                </div>
+            </form>
         </div>
     </div>
 <?php endif; ?>

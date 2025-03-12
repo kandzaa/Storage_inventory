@@ -5,7 +5,7 @@ class AdminController
 {
     public function show()
     {
-        if (Validator::Role('ADMIN') == false) { //only can use this if logged in
+        if (Validator::Role('ADMIN') == false) {
             header("Location: /login");
             exit();
         }
