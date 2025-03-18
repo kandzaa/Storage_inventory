@@ -4,15 +4,12 @@
 <?php
 $usermodel = new AdminModel();
 $users = $usermodel->getUsers();
+$logs = $usermodel->getLogs();
 ?>
 
 <h1 class="text-4xl text-center font-bold">Admin Page</h1>
 
-<?php if (isset($_GET['success'])): ?>
-    <p class="text-green-500 text-center">User updated successfully!</p>
-<?php elseif (isset($_GET['error'])): ?>
-    <p class="text-red-500 text-center">Error updating user!</p>
-<?php endif; ?>
+
 
 <table class="table-auto w-full border-collapse border border-gray-300">
     <thead>
@@ -78,3 +75,47 @@ $users = $usermodel->getUsers();
         </div>
     </div>
 <?php endif; ?>
+
+
+<h1 class="text-4xl text-center font-bold">Logs</h1>
+
+<table class="table">
+    <thead >
+        <tr>
+            <td>
+                User Id
+            </td>
+            <td>
+                Target id
+            </td>
+            <td>
+                Target Type
+            </td>
+            <td>
+                Description
+            </td>
+            <td>
+                Action time
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+    <?php
+        if (!empty($logs)) {
+            foreach ($logs as $log) {
+                echo "<tr data-id='" . $log["ID"] . "' class='inventory-item hover:bg-gray-500 cursor-pointer transition-colors duration-300 hover:text-white'>";
+                echo "<td class='border border-gray-300 px-4 py-2'>" . $log["USER_ID"] . "</td>";
+                echo "<td class='border border-gray-300 px-4 py-2'>" . $log["TARGET_ID"] . "</td>";
+                echo "<td class='border border-gray-300 px-4 py-2'>" . $log["TARGET_TYPE"] . "</td>";
+                echo "<td class='border border-gray-300 px-4 py-2'>" . $log["DESCRIPTION"] . "</td>";
+                echo "<td class='border border-gray-300 px-4 py-2'>" . $log["ACTION_TIME"] . "</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='5' class='border border-gray-300 px-4 py-2 text-center'>No data found</td></tr>";
+        }
+        ?>
+    </tbody>
+</table>
+
+

@@ -21,4 +21,9 @@ class AdminModel extends Model
         $sql = "UPDATE USER SET USERNAME = ?, PASSWORD = ?, ROLE = ? WHERE ID = ?";
         return $this->db->execute($sql, [$username, $password, $role, $id]);
     }
+    public function getLogs()
+    {
+        $sql = "SELECT * FROM LOGS";
+        return $this->db->execute($sql);
+    }
 }
