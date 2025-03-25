@@ -14,6 +14,14 @@ class AuthController
         include './view/register.php';
     }
 
+    public function logout()
+    {
+        unset($_SESSION['user']);
+        session_destroy();
+        header('Location: /');
+        exit;
+    }
+
     public function processLogin()
     {
         // if (session_status() == PHP_SESSION_NONE) {
