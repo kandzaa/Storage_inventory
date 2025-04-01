@@ -1,4 +1,5 @@
 <?php
+require_once './Models/OrdersModel.php';
 
 class OrdersController
 {
@@ -11,8 +12,7 @@ class OrdersController
         require './view/orders.php';
         
     }
-
-   
+    
 }
 
 
