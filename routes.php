@@ -36,7 +36,7 @@ $router->get('/products/edit', [ProductsController::class, 'edit']);
 $router->post('/products/edit/process', [ProductsController::class, 'update']);
 $router->post('/admin/save', [AdminController::class, 'saveUser']);
 
-$router->get('/orders', [OrdersController::class, 'orders']);
+$router->get('/logs', [OrdersController::class, 'orders']);
 $router->get('/admin', [AdminController::class, 'show']);
 $router->get('/report', [ReportController::class, 'index']);
 $router->post('/report/generate', [ReportController::class, 'generateReport']);
